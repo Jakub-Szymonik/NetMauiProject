@@ -89,7 +89,7 @@ namespace Project.Pages
         }
 
         //when a movie is selected, show options
-        private async Task MoviesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void MoviesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection.Count == 0)
             {
