@@ -34,21 +34,4 @@
             ContentTemplate="{DataTemplate local:SettingsPage}" 
             Route="SettingsPage"/>
     </FlyoutItem>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </Shell>

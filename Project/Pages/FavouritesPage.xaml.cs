@@ -6,4 +6,9 @@ public partial class FavouritesPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void FavouritesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
 }
