@@ -25,6 +25,12 @@ namespace Project.Pages
         //load all the data
         private async Task LoadDataAsync()
         {
+
+            //show loading indicator
+            LoadingIndicator.IsRunning = true;
+            LoadingPanel.IsVisible = true;
+
+
             userData = await dataService.LoadUserDataAsync();
 
             //check if user needs to enter their name
@@ -49,6 +55,10 @@ namespace Project.Pages
             genres.Insert(0, "All Genres");
             GenrePicker.ItemsSource = genres;
             GenrePicker.SelectedIndex = 0;
+
+            // Hide loading
+            LoadingIndicator.IsRunning = false;
+            LoadingPanel.IsVisible = false;
 
         }
 

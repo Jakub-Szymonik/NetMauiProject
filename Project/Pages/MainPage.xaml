@@ -5,6 +5,18 @@
              Title="Movie Explorer">
 
     <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="10">
+        <!--=loading indicator=-->
+        <VerticalStackLayout x:Name="LoadingPanel"
+                     IsVisible="False"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Grid.RowSpan="4">
+            <ActivityIndicator x:Name="LoadingIndicator" 
+                       IsRunning="False"/>
+            <Label Text="Loading movies, this might take a moment..." 
+           HorizontalOptions="Center"
+           Margin="0,10,0,0"/>
+        </VerticalStackLayout>
 
         <!--=Welcome header=-->
         <Label x:Name ="WelcomeLabel"
@@ -48,7 +60,7 @@
                                        FontAttributes="Bold"/>
                                 <Label Text="{Binding Year}"/>
                                 <Label Text="{Binding GenreString}" TextColor="Gray"/>
-                                <Label Text="{Binding ImdbRating, StringFormat='IMDB: {0}'}" TextColor="Gold"/>
+                                <Label Text="{Binding rating, StringFormat='IMDB: {0}'}" TextColor="Gold"/>
                             </VerticalStackLayout>
                         </Grid>
                     </Border>
