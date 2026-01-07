@@ -4,22 +4,30 @@
              x:Class="Project.Pages.WatchedPage"
              Title="WatchedPage">
 
+    <!--=Pasted in and edited from FavouritesPage=-->
+    <Grid RowDefinitions="Auto,Auto,*" Padding="10">
 
-    <Grid RowDefinitions="Auto,*" Padding="10">
-
-        <Label Text="Your Favourite Movies"
+        <Label Text="Your Watched Movies"
            FontSize="20"
            Grid.Row="0"
            Margin="0,0,0,10"/>
 
-        <CollectionView x:Name="FavouritesList"
-                    Grid.Row="1"
-                    SelectionMode="Single"
-                    SelectionChanged="FavouritesList_SelectionChanged">
 
+        <Button x:Name="ClearWatchedButton"
+                Text="Clear Watched List"
+                Grid.Row="1"
+                Clicked="ClearWatchedButton_Clicked"
+                HorizontalOptions="End"
+                Margin="0,0,0,10"/> "
+        
+        
+        
+        
+        <CollectionView x:Name="WatchedList"
+                    Grid.Row="2"
 
             <CollectionView.EmptyView>
-                <Label Text="You have no favourite movies yet."
+                <Label Text="You have no watched movies yet."
                    FontSize="16"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
