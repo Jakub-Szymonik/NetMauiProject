@@ -4,14 +4,14 @@ namespace Project.Pages
 {
     public partial class MainPage : ContentPage
     {
-        private DataService DataService;
+        private DataService dataService;
         private List<Movie> allMovies;
         private UserData userData;
 
         public MainPage()
         {
             InitializeComponent();
-            DataService = new DataService();
+            dataService = new DataService();
             allMovies = new List<Movie>();
         }
 
@@ -25,7 +25,7 @@ namespace Project.Pages
         //load all the data
         private async Task LoadDataAsync()
         {
-            userData = await DataService.LoadUserDataAsync();
+            userData = await dataService.LoadUserDataAsync();
 
             //check if user needs to enter their name
             if (string.IsNullOrWhiteSpace(userData.UserName))
@@ -34,14 +34,14 @@ namespace Project.Pages
                 if (!string.IsNullOrWhiteSpace(name))
                 {
                     userData.UserName = name;
-                    await DataService.SaveUserDataAsync(userData);
+                    await dataService.SaveUserDataAsync(userData);
                 }
             }
 
             WelcomeLabel.Text = $"Welcome, {userData.UserName}!";
 
             //load movies
-            allMovies = await DataService.GetMoviesAsync();
+            allMovies = await dataService.GetMoviesAsync();
             MoviesList.ItemsSource = allMovies;
 
             //setup genre picker
@@ -68,6 +68,7 @@ namespace Project.Pages
         private void FilterMovies()
         {
             var filtered = allMovies.AsEnumerable();
+
 
             string searchText = SearchEntry.Text?.ToLower() ?? "";
             if (!string.IsNullOrWhiteSpace(searchText))
@@ -101,7 +102,7 @@ namespace Project.Pages
 
             //show movie details and options
             string action = await DisplayActionSheet($"{movie.Emoji}{movie.Title} ({movie.Year})\nDirector: {movie.Director}\nIMDB: {movie.ImdbRating}\nGenres: {movie.GenreString}",
-                "Close", null, "Add to Favorites", "Mark as Watched");
+                "Close", null, "Add to Favourites", "Mark as Watched");
 
             if (action == "Add to Favourites")
             {
@@ -123,7 +124,7 @@ namespace Project.Pages
                     };
 
                     userData.Favourites.Add(fav);
-                    await DataService.SaveUserDataAsync(userData);
+                    await dataService.SaveUserDataAsync(userData);
                     await DisplayAlert("Success", "Movie added to favourites!", "OK");
                 }
 
@@ -151,7 +152,7 @@ namespace Project.Pages
                         ViewedDate = DateTime.Now
                     };
                     userData.ViewHistory.Add(watched);
-                    await DataService.SaveUserDataAsync(userData);
+                    await dataService.SaveUserDataAsync(userData);
                     await DisplayAlert("Success", "Movie marked as watched!", "OK");
                 }
             }

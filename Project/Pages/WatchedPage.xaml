@@ -48,10 +48,10 @@
                                    FontAttributes="Bold"/>
                                 <Label Text="{Binding Year}"/>
                                 <Label Text="{Binding GenreString}" TextColor="Gray"/>
-                                <Label Text="{Binding ImdbRating, StringFormat='IMDB: {0}'}" TextColor="Gold"/>
-                                <Label Text="{Binding AddedDate, StringFormat='Added: {0:dd/MM/yy HH:mm}'}"
+                                <Label Text="{Binding ImdbRating, StringFormat='IMDB: {0}'}" TextColor="Yellow"/>
+                                <Label Text="{Binding ViewedDate, StringFormat='Added: {0:dd/MM/yy HH:mm}'}"
                                     FontSize="12"
-                                    TextColor="Green"/>
+                                    TextColor="Gray"/>
                             </VerticalStackLayout>
                         </Grid>
                     </Border>

@@ -6,13 +6,13 @@ namespace Project.Pages;
 
 public partial class FavouritesPage : ContentPage
 {
-    private DataService DataService;
-    private UserData UserData;
+    private DataService dataService;
+    private UserData userData;
 
     public FavouritesPage()
     {
         InitializeComponent();
-        DataService = new DataService();
+        dataService = new DataService();
     }
 
 
@@ -26,10 +26,10 @@ public partial class FavouritesPage : ContentPage
     //loafing the favourite movies, newest first
     private async Task LoadFavourites()
     {
-        UserData = await DataService.LoadUserDataAsync();
+        userData = await dataService.LoadUserDataAsync();
 
 
-        FavouritesList.ItemsSource = UserData.Favourites.OrderByDescending(f => f.AddedDate).ToList();
+        FavouritesList.ItemsSource = userData.Favourites.OrderByDescending(f => f.AddedDate).ToList();
     }
 
     //removing a favourite movie
@@ -46,8 +46,8 @@ public partial class FavouritesPage : ContentPage
         //removes the movie and refreshes the list
         if (remove)
         {
-            UserData.Favourites.Remove(fav);
-            await DataService.SaveUserDataAsync(UserData);
+            userData.Favourites.Remove(fav);
+            await dataService.SaveUserDataAsync(userData);
             await LoadFavourites();
         }
 
