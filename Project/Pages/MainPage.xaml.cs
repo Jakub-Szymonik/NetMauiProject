@@ -97,7 +97,7 @@ namespace Project.Pages
             }
 
             var movie = e.CurrentSelection[0] as Movie;
-            if (movie != null) return;
+            if (movie == null) return;
 
             //show movie details and options
             string action = await DisplayActionSheet($"{movie.Emoji}{movie.Title} ({movie.Year})\nDirector: {movie.Director}\nIMDB: {movie.ImdbRating}\nGenres: {movie.GenreString}",
