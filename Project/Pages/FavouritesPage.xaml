@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project.Pages.FavouritesPage"
              Title="FavouritesPage">
+    
     <Grid RowDefinitions="Auto,*" Padding="10">
 
         <Label Text="Your Favourite Movies"
@@ -11,7 +12,19 @@
                Margin="0,0,0,10"/>
 
         <CollectionView x:Name="FavouritesList"
-                        Grid.Row="1">
+                        Grid.Row="1"
+                        SelectionMode="Single"
+                        SelectionChanged="FavouritesList_SelectionChanged">
+
+
+            <CollectionView.EmptyView>
+                <Label Text="You have no favourite movies yet."
+                       FontSize="16"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+            </CollectionView.EmptyView>
+
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="10" Margin="5" Stroke="Gray">
@@ -27,6 +40,9 @@
                                 <Label Text="{Binding Year}"/>
                                 <Label Text="{Binding GenreString}" TextColor="Gray"/>
                                 <Label Text="{Binding ImdbRating, StringFormat='IMDB: {0}'}" TextColor="Gold"/>
+                                <Label Text="{Binding AddedDate, StringFormat='Added: {0:dd/MM/yy HH:mm}'}"
+                                        FontSize="12"
+                                        TextColor="Green"/>
                             </VerticalStackLayout>
                         </Grid>
                     </Border>
