@@ -18,7 +18,7 @@
 
 
             <CollectionView.EmptyView>
-                <Label Text="You have no favourite movies yet."
+                <Label Text="You have no favourite movies yet, very picky! ¯\_(ツ)_/¯"
                        FontSize="16"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
